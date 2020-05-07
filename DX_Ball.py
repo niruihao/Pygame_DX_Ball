@@ -499,6 +499,7 @@ class Normal(GameWindow, Paddle2, Ball2, Brick, Collision, Score, Win, GameOver)
         super(Score, self).__init__(*args, **kw)
         super(Win, self).__init__(*args, **kw)
         start_sign = 0
+
         while True:
             self.bgcolor()
             self.paddle_move()
@@ -534,6 +535,7 @@ class Advanced(GameWindow, Paddle3, Ball3, Brick, Collision, Score, Win, GameOve
         super(Score, self).__init__(*args, **kw)
         super(Win, self).__init__(*args, **kw)
         start_sign = 0
+
         while True:
             self.bgcolor()
             self.paddle_move()
@@ -575,6 +577,7 @@ def rungame():
     screen.blit(start, (30, 350))
     screen.blit(indicator, (30, 400))
     pygame.display.flip()
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
