@@ -253,6 +253,7 @@ class Collision():
     This is a collision class, which used to tackle with the collision and
     reflection problem. It defines how does the ball interact with the
     1) window boundary 2) paddle 3) brick by 1)collision 2) reflection
+    reference: https://blog.csdn.net/momobaba2018/article/details/82823532
     '''
 
     # ball-window boundary:
