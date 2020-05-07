@@ -563,6 +563,7 @@ def rungame():
     pygame.init()
     pygame.font.init()
     screen = pygame.display.set_mode([600, 500])
+    pygame.display.set_caption("DX-Ball")
     screen.fill([0, 0, 0])
     myimage = pygame.image.load("bg.png")
     screen.blit(myimage, [0, 0])

@@ -9,7 +9,14 @@ The casual mode has longer paddle and larger, slower ball, the advanced mode has
 You can control the ball by using different part of paddle to
 receive it.
 
+Start Interface:
+![image](https://github.com/niruihao/Pygame_DX_Ball/blob/master/Start_interface.png)
 
+We can choose the level we like, click it and start the game.
+
+Game Interface:
+![image](https://github.com/niruihao/Pygame_DX_Ball/blob/master/Game_interface.png)
+We can move the paddle in press mouse left button to launch the ball.
 
 
 reference:
