@@ -2,6 +2,15 @@
 Author: Ruihao Ni
 EN.640.635 Software Carpentry
 Final Project DX-Ball Game
+
+This is a program of DX-Ball game based on the pygame module
+used the paddle to hit the ball and control the direction
+and finally eliminate all the bricks.
+There are three levels of game: Casual, Normal and Advanced
+The casual mode has longer paddle and larger, slower ball
+The advanced mode has a shorter paddle and smaller, faster ball.
+You can control the ball by using different part of paddle to
+receive it.
 '''
 
 import pygame
@@ -436,7 +445,7 @@ class Win():
 
 
 class Casual(GameWindow, Paddle1, Ball1, Brick, Collision, Score, Win, GameOver):
-    # creat the main program
+    # creat the game class for normal level, use Paddle1 and Ball1 class
 
     def __init__(self, *args, **kw):
         # use super function the enable the inheritance of the
@@ -455,10 +464,10 @@ class Casual(GameWindow, Paddle1, Ball1, Brick, Collision, Score, Win, GameOver)
             self.bgcolor()
             self.paddle_move()
             self.countscore()
-         
+            # if win or lose, break the loop
             if self.over_sign == 1 or self.win_sign == 1:
                 break
-            # read the status of game window
+            # read the status of game window, press to start the game
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -466,14 +475,14 @@ class Casual(GameWindow, Paddle1, Ball1, Brick, Collision, Score, Win, GameOver)
                     pressed_array = pygame.mouse.get_pressed()
                     if pressed_array[0]:
                         start_sign = 1
+            # if the not started, initiate the ball, if started, move the ball
             if start_sign == 0:
                 self.ballready()
             else:
                 self.ballmove()
             self.brickarrange()
-            # refresh the game window
+            # refresh the game window and control the refresh frequency
             pygame.display.update()
-            # control the refresh frequency
             time.sleep(0.010)
 
 
@@ -548,6 +557,9 @@ class Advanced(GameWindow, Paddle3, Ball3, Brick, Collision, Score, Win, GameOve
 
 
 def rungame():
+    # The main game function, start the game, show the start interface
+    # of the game. Load the background picture and the level options.
+    # Create the button and load the objects for different level.
     pygame.init()
     pygame.font.init()
     screen = pygame.display.set_mode([600, 500])
