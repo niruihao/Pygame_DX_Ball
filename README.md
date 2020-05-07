@@ -16,10 +16,11 @@ We can choose the level we like, click it and start the game.
 
 Game Interface:
 ![image](https://github.com/niruihao/Pygame_DX_Ball/blob/master/Game_interface.png)
-We can move the paddle in press mouse left button to launch the ball.
+We can move the paddle in press mouse left button to launch the ball. When all the brick are eliminated, you win this game!
 
 
 reference:
 1. Idea of the game: https://store.steampowered.com/app/922400/DXBall_2_20th_Anniversary_Edition/
 2. pygame documentation: https://www.pygame.org/docs/
-3. Collision class and program structure: https://blog.csdn.net/momobaba2018/article/details/82823532
+3. Collision judgement and data structure: https://blog.csdn.net/momobaba2018/article/details/82823532
+4. super function: https://realpython.com/python-super/
