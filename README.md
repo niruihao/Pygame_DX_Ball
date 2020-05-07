@@ -25,3 +25,4 @@ reference:
 3. Collision judgement and data structure: https://blog.csdn.net/momobaba2018/article/details/82823532
 4. super function: https://realpython.com/python-super/
 5. python class inheritance: https://www.w3schools.com/python/python_inheritance.asp
+6. Start interface picture: https://gamicus.gamepedia.com/DX-Ball (the picture was modified)
