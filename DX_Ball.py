@@ -21,10 +21,10 @@ import math
 
 
 class GameWindow():
-    '''
-    The game window class, set up the size of the window and
-    with title and background color.
-    '''
+
+    # The game window class, set up the size of the window and
+    # with title and background color.
+
 
     def __init__(self, *args, **kw):
         # set the size of the window
@@ -44,9 +44,7 @@ class GameWindow():
 
 
 class Ball1():
-    '''
-    create the ball object for the casual (easy) level
-    '''
+    # create the ball object for the casual (easy) level
 
     def __init__(self, *args, **kw):
 
@@ -87,9 +85,7 @@ class Ball1():
 
 
 class Ball2():
-    '''
-    Create the ball object for the normal(Medium) level
-    '''
+    # Create the ball object for the normal(Medium) level
 
     def __init__(self, *args, **kw):
         # set the radius, color and speed parameter
@@ -154,7 +150,7 @@ class Ball3():
 
 
 class Paddle1():
-    '''Create the paddle object for casual level'''
+    # Create the paddle object for casual level
 
     def __init__(self, *args, **kw):
         # set the color and size of the paddle
@@ -166,7 +162,7 @@ class Paddle1():
     def paddle_move(self):
         # obtain mouse position parameter
         self.mouse_x, self.mouse_y = pygame.mouse.get_pos()
-        # draw the rack and set the boundary
+        # draw the paddle and set the boundary
         # if the mouse goes near the left and right boundary, fix the
         # left or right side of the paddle on the window boundary
         if self.mouse_x >= self.window_width - self.paddle_width // 2:
@@ -266,8 +262,12 @@ class Collision():
         if self.ball_y <= self.radius:
             self.move_y = -self.move_y
 
-    # ball-paddle:
-
+    # ball-paddle: 
+    # whether the ball collide depend on the position of the ball, use the closest point to find it.
+    # hit on top of the paddle, if the ball hit the left edge, it will move 135 degree to the
+    # right horizontal axis, if hit the right edgem it will move 45 degree and if the ball
+    # hit right middle of the paddle, it will move up 90 degree. The degree is proportional
+    # to the position on the paddle.
     def ball_paddle(self):
         # define the collision sign
         self.collision_sign_x = 0
@@ -304,7 +304,9 @@ class Collision():
         # define the distance of the ball center and the brick edge
         self.distance = math.sqrt(
             (self.closestpoint_x - self.ball_x) ** 2 + (self.closestpoint_y - self.ball_y) ** 2)
-
+        
+        # if the ball hit the left and right corner of the paddle, they will move
+        # 45 degree up.
         if self.distance < self.radius and self.collision_sign_y == 1 and (self.collision_sign_x == 1 or self.collision_sign_x == 2):
             if self.collision_sign_x == 1:
                 self.move_x = int(- self.speed * math.sin(math.pi / 4))
@@ -312,22 +314,19 @@ class Collision():
             if self.collision_sign_x == 2:
                 self.move_x = int(self.speed * math.sin(math.pi / 4))
                 self.move_y = int(self.speed * math.sin(math.pi / 4))
-
-        # hit on the paddle
-
+        # theta is the angle of the reflection direction to the horizontal right direction.
         if self.distance < self.radius and self.collision_sign_y == 1 and self.collision_sign_x == 3:
             theta = math.pi / 2 * \
                 (1 - (self.ball_x - self.mouse_x) / self.paddle_width)
             self.move_x = int(self.speed * math.cos(theta))
             self.move_y = int(self.speed * math.sin(theta))
 
-        # collision check when ball locate at left and right side of the rack
+        # Reflection when ball locate at left and right edge of the paddle,
+        # they will move 30 degree over the horizontal direction
         if self.distance < self.radius and self.collision_sign_y == 3:
             if self.collision_sign_x == 1:
-
                 self.move_x = int(- self.speed * math.cos(math.pi / 6))
                 self.move_y = int(self.speed * math.sin(math.pi / 6))
-
             if self.collision_sign_x == 2:
                 self.move_x = int(self.speed * math.cos(math.pi / 6))
                 self.move_y = int(self.speed * math.sin(math.pi / 6))
@@ -586,7 +585,6 @@ def rungame():
                 Normal()
             if event.type == pygame.MOUSEBUTTONDOWN and 301 <= event.pos[0] <= 450 and 0 <= event.pos[1] <= 500:
                 Advanced()
-
 
 if __name__ == '__main__':
     rungame()
